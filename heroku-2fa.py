@@ -94,11 +94,9 @@ def fetch_api_json(url):
 def find_affected_apps(users_missing_2fa):
     affected_apps = defaultdict(set)
     for role, users in users_missing_2fa.items():
-        # print('\n~ {} {}s:'.format(len(users), role))
         for email in sorted(users):
             for app in apps_accessible_by_user(email, role):
                 affected_apps[app].add(email)
-            # print(email)
     return affected_apps
 
 
