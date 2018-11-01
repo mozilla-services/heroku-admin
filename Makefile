@@ -7,6 +7,10 @@ help:
 	@echo "    test     test everything!"
 	@echo "    csv      Generate CSV output for today"
 	@echo "    email    Generate email output for today"
+	@echo "    membership Generate membership output for today"
+
+membership:
+	heroku-admin --membership > $$(date -u +%Y-%m-%d_heroku_membership.csv)
 
 email:
 	./heroku-2fa.py --email > $$(date -u +%Y-%m-%dT%H:%M:%S%Z_heroku_missing_2FA.csv) \
